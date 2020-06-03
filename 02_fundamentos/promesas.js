@@ -19,7 +19,6 @@ let salarios = [{
 
 
 let getMusico = (id) => {
-
     return new Promise((resolve, reject) => {
         let musicoDB = musicos.find(musico => musico.id === id)
             // console.log(musicoDB);
@@ -46,8 +45,16 @@ let getSalario = (musico) => {
     });
 }
 
-getMusico(1).then(musico =>
-    getSalario(musico).then(
-        resp => console.log(`El Salario de ${resp.nombre} es de ${resp.salario}$`),
-        (err) => console.log(err)),
-    (err) => console.log(err));
+// getMusico(1).then(musico =>
+//     getSalario(musico).then(
+//         resp => console.log(`El Salario de ${resp.nombre} es de ${resp.salario}$`),
+//         (err) => console.log(err)),
+//     (err) => console.log(err));
+
+getMusico(3).then(musico => {
+    return getSalario(musico);
+}).then(resp => {
+    console.log(`El salario de ${resp.nombre} es de ${resp.salario}$`);
+}).catch(err => {
+    console.log(err);
+})
