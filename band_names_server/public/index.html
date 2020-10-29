@@ -21,5 +21,12 @@
         socket.on('mensaje',function(payload){
             console.log('Escuchando:' ,payload);
         });
+        socket.on('nuevoMensaje',function(payload){
+            console.log('Escuchando:' ,payload);
+        });
+        socket.on('activeBands',function(bands){
+            console.clear();
+            console.table(bands);
+        });
     </script>
 </html>
